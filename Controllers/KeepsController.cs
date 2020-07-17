@@ -21,11 +21,11 @@ namespace Keepr.Controllers
             _ks = ks;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Keep>> Get()
+        public ActionResult<IEnumerable<Keep>> GetAll(int id)
         {
             try
             {
-                return Ok(_ks.Get());
+                return Ok(_ks.GetAll(id));
             }
             catch (Exception e)
             {
@@ -33,9 +33,22 @@ namespace Keepr.Controllers
             };
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Keep> GetById(int id)
+        {
+            try
+            {
+                return Ok(_ks.GetById(id));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
         [HttpPost]
         [Authorize]
-        public ActionResult<Keep> Post([FromBody] Keep newKeep)
+        public ActionResult<Keep> Create([FromBody] Keep newKeep)
         {
             try
             {
@@ -49,5 +62,39 @@ namespace Keepr.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        [Authorize]
+        public ActionResult<Keep> Edit(int id, [FromBody] Keep keepToUpdate)
+        {
+            try
+            {
+                keepToUpdate.Id = id;
+                string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return Ok(_ks.Edit(keepToUpdate, userId));
+            }
+            catch(UnauthorizedAccessException e)
+            {
+                return Unauthorized(e.Message);
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize]
+        public ActionResult<string> Delete(int id)
+        {
+            try
+            {
+                string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return Ok(_ks.Delete(id, userId));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }
