@@ -38,11 +38,40 @@ namespace Keepr.Services
         internal Keep Edit(Keep keepToUpdate, string userId)
         {
             Keep foundKeep = GetById(keepToUpdate.Id);
-            if (foundKeep.UserId != userId && foundKeep.Keeps<keepToUpdate.Keeps)
+            // if (foundKeep.UserId != userId && foundKeep.Views<keepToUpdate.Views)
+            // {
+            //     if(_repo.ViewCount(keepToUpdate))
+            //     {
+            //         foundKeep.Views=keepToUpdate.Views;
+            //         return foundKeep;
+            //     }
+            // }
+            // if (foundKeep.Keeps<keepToUpdate.Keeps)
+            // {
+            //     if(_repo.KeepCount(keepToUpdate))
+            //     {
+            //         foundKeep.Keeps =keepToUpdate.Keeps;
+            //         return foundKeep;
+            //     }
+            // }
+            if(foundKeep.UserId==keepToUpdate.UserId)
             {
-                
+                if(_repo.userEdit(keepToUpdate))
+                {
+                    foundKeep = keepToUpdate;
+                    return foundKeep;
+                }
             }
-            return foundKeep;
+            if(foundKeep.UserId!=keepToUpdate.UserId)
+            {
+                if(_repo.viewerEdit(keepToUpdate))
+                {
+                    foundKeep.Views = keepToUpdate.Views;
+                    foundKeep.Keeps = keepToUpdate.Keeps;
+                    return foundKeep;
+                }
+            }
+            throw new Exception("not yo keep");
         }
 
         internal string Delete(int id, string userId)

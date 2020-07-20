@@ -39,11 +39,61 @@ namespace Keepr.Repositories
             return newKeep;
         }
 
+        // internal bool ViewCount(Keep keepToUpdate)
+        // {
+        //     string sql=@"
+        //     UPDATE keeps
+        //     SET
+        //     views=@Views
+        //     WHERE id = @Id";
+        //     int affectedRows = _db.Execute(sql, keepToUpdate);
+        //     return affectedRows == 1;
+        // }
+
+        //   internal bool KeepCount(Keep keepToUpdate)
+        // {
+        //     string sql=@"
+        //     UPDATE keeps
+        //     SET
+        //     keeps=@Keeps,
+        //     name=@Name,
+        //     description=@Description,
+        //     WHERE id = @Id";
+        //     int affectedRows = _db.Execute(sql, keepToUpdate);
+        //     return affectedRows == 1;
+        // }
+        internal bool userEdit(Keep keepToUpdate)
+        {
+            string sql=@"
+            UPDATE keeps
+            SET
+            name = @Name,
+            description = @Description,
+            keeps= @Keeps,
+            img= @Img,
+            isPrivate=@IsPrivate
+            WHERE id = @Id;";
+            int affectedRows = _db.Execute(sql, keepToUpdate);
+            return affectedRows ==1;
+        }
+        internal bool viewerEdit(Keep keepToUpdate)
+        {
+            string sql=@"
+            UPDATE keeps
+            SET
+            keeps= @Keeps,
+            WHERE id = @Id;";
+            int affectedRows = _db.Execute(sql, keepToUpdate);
+            return affectedRows ==1;
+        }
+
         internal bool Delete(int id, string userId)
         {
             string sql = "DELETE FROM keeps WHERE id=@id AND userID = @userId LIMIT 1";
             int affectedRows= _db.Execute(sql, new {id,userId});
             return affectedRows==1;
         }
+
+      
     }
 }
