@@ -20,18 +20,36 @@ namespace Keepr.Controllers
         {
             _ks = ks;
         }
-        [HttpGet]
-        public ActionResult<IEnumerable<Keep>> GetAll(int id)
+
+        [HttpGet("user")]
+        [Authorize]
+        public ActionResult<IEnumerable<Keep>> GetKeepsByUser()
         {
             try
             {
-                return Ok(_ks.GetAll(id));
+                string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return Ok(_ks.GetByUserId(userId));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Keep>> GetAll()
+        {
+            try
+            {
+                return Ok(_ks.GetAll());
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             };
         }
+
+
 
         [HttpGet("{id}")]
         public ActionResult<Keep> GetById(int id)
