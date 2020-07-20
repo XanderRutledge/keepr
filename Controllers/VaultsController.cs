@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using Keepr.Models;
 using Keepr.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
@@ -17,6 +19,22 @@ public class VaultsController : ControllerBase
         _service=service;
     }
 
+
+     [HttpGet("user")]
+        [Authorize]
+        public ActionResult<IEnumerable<Vault>> GetVaultsByUser()
+        {
+            try
+            {
+                string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return Ok(_service.GetByUserId(userId));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+        
     [HttpGet]
     public ActionResult<IEnumerable<Vault>> Get()
     {

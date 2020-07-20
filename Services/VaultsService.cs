@@ -17,6 +17,12 @@ namespace Keepr.Services
          {
              return _repo.Get();
           }
+
+        internal IEnumerable<Vault> GetByUserId(string userId)
+        {
+            return _repo.GetVaultsByUserId(userId);
+        }
+
         internal Vault GetById(int vaultId)
         {
             Vault exists = _repo.GetById(vaultId);
