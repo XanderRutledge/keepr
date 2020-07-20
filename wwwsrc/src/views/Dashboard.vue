@@ -1,7 +1,15 @@
 <template>
-  <div class="dashboard">
-    <h1>WELCOME TO THE DASHBOARD</h1>
-    public {{ publicKeeps }} user {{ userKeeps }}
+  <div class="dashboard container-fluid bg-info">
+    <div class="row text-center text-white">
+      <div class="col">
+        <h1>Your Keeps</h1>
+      </div>
+    </div>
+<div class="row">
+  
+</div>
+
+
   </div>
 </template>
 
