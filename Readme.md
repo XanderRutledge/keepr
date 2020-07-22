@@ -14,7 +14,7 @@ Keepr is a typical project where some of the basic layouts have been thought up 
 
 We want to give the users the opportunity to click on the keep icon for any post and have a list of their vaults appear. Selecting the vault should create a reference to that post and the users vault.
 
-Vaults themselves are relatively simple... They only require a name and a description and will then have a list of posts that are saved within the vault. Think about how you will handle this relationship.
+Vaults themselves are relatively simple... They only require a name and a description and will then have a list of  that are saved within the vault. Think about how you will handle this relationship.
 
 For example I may really like game art and thus I would be a user who creates a vault named **_Sweet Game Art_** I will then start saving the `keeps` I like into this vault.
 
@@ -50,10 +50,10 @@ What this site is already pretty if you follow the mocks :wink: Make sure the fe
 
 #### Visualization:
 
-- Visitors can see all public keeps (login not required)
-- Keeps are displayed in a card like format with all data rendered
-- Users have a dashboard route to see all their keeps and vaults
-- Users can only see vaults they created
+x Visitors can see all public keeps (login not required)
+x Keeps are displayed in a card like format with all data rendered
+x Users have a dashboard route to see all their keeps and vaults
+x Users can only see vaults they created
 - Users can View all the keeps in a given vault
 - Anytime a `keep` is `kept in a vault` the relevant count should go up
 
@@ -61,10 +61,10 @@ What this site is already pretty if you follow the mocks :wink: Make sure the fe
 
 - Users can:
 
-- Register, login and be automatically logged on page refresh
-- Create and Delete Keeps
-- Keeps can be public or private
-- Create and Delete Vaults
+x Register, login and be automatically logged on page refresh
+x Create and Delete Keeps
+x Keeps can be public or private
+x Create and Delete Vaults
 - Only Delete **things they created**
 - Add Keeps to Vaults
 - Remove Keeps from Vaults

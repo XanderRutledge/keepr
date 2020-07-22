@@ -1,4 +1,4 @@
-USE gregslistxr;
+-- USE gregslistxr;
 
 -- CREATE TABLE vaults (
 --     id int NOT NULL AUTO_INCREMENT,

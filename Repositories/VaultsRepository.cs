@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using Dapper;
 using Keepr.Models;
+using Dapper;
 
 namespace Keepr.Repositories
 {
@@ -37,9 +37,9 @@ namespace Keepr.Repositories
         {
             string sql = @"
             INSERT INTO vaults
-            (name,description)
+            (name,description,userId)
             VALUES
-            (@Name,@Description);
+            (@Name,@Description,@userId);
             SELECT LAST_INSERT_ID();";
             return _db.ExecuteScalar<int>(sql, newVault);
         }

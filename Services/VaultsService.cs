@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using Keepr.Models;
 using Keepr.Repositories;
 
@@ -13,15 +14,16 @@ namespace Keepr.Services
              _repo = repo;
          }
 
+         internal IEnumerable<Vault> GetByUserId(string userId)
+        {
+            return _repo.GetVaultsByUserId(userId);
+        }
+
         public IEnumerable<Vault> Get()
          {
              return _repo.Get();
           }
 
-        internal IEnumerable<Vault> GetByUserId(string userId)
-        {
-            return _repo.GetVaultsByUserId(userId);
-        }
 
         internal Vault GetById(int vaultId)
         {
