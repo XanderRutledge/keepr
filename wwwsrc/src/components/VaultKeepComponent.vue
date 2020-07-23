@@ -1,5 +1,5 @@
 <template>
-    <div class = "userKeep rounded-lg text-center">
+    <div class = "vaultKeep rounded-lg text-center">
         <div class=" card rounded-lg bg-light" style="max-width: 30rem;">
             <img :src="userKeep.img" class="card-img-top p-2 bg-primary" alt="..." />
         
@@ -24,8 +24,8 @@
 
 <script>
 export default {
-    name: "userKeep",
-    props:["userKeep"],
+    name: "vaultKeep",
+    props:["vaultKeep"],
     data(){
         return {
             newVK:{}

@@ -106,6 +106,14 @@ async getKeepsByUser({commit,dispatch}){
     }
   },
 
+  async addVK({commit,dispatch}, newVaultKeep){
+    try {
+      let res = await api.post("vaultkeeps", newVaultKeep)
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   },
   modules: {
