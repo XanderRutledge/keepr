@@ -54,7 +54,7 @@ x Visitors can see all public keeps (login not required)
 x Keeps are displayed in a card like format with all data rendered
 x Users have a dashboard route to see all their keeps and vaults
 x Users can only see vaults they created
-- Users can View all the keeps in a given vault
+x Users can View all the keeps in a given vault
 - Anytime a `keep` is `kept in a vault` the relevant count should go up
 
 #### Functionality:
@@ -67,7 +67,7 @@ x Keeps can be public or private
 x Create and Delete Vaults
 x Only Delete **things they created**
 x Add Keeps to Vaults
-- Remove Keeps from Vaults
+x Remove Keeps from Vaults
 x Passes all the tests
 
 ### Finished?

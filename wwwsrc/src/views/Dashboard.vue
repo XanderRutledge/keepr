@@ -77,7 +77,7 @@
       </div>
 
 
-
+<h1 class="text-center text-white">Your Vaults:</h1>
 <vault v-for="vault in vaults" :key="vault.id" :vault="vault"/>
 
   </div>

@@ -37,8 +37,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setBearer({}, bearer) {
+    setBearer({dispatch}, bearer) {
       api.defaults.headers.authorization = bearer;
+      dispatch("getVaults")
     },
     resetBearer() {
       api.defaults.headers.authorization = "";

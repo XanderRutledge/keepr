@@ -103,6 +103,8 @@ export default {
   },
   async mounted(){
     await this.$store.dispatch("getAllKeeps");
+    // await this.$store.dispatch("getVaults")
+
   },
   computed: {
     user() {

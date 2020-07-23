@@ -1,8 +1,8 @@
 <template>
 <div class="vault row" >
-    <div class="col">
+    <div class="col justify-content-center text-center">
             
-        <router-link :to="{ name: 'vault', params: { vaultId: vault.id } }"><h3>{{vault.name}} - {{vault.description}}</h3></router-link>  <button type="button" @click="deleteVault(vault.id)" class="btn btn-danger">Delete</button>
+        <router-link :to="{ name: 'vault', params: { vaultId: vault.id } }"><h3 class="text-white">{{vault.name}} - {{vault.description}}</h3></router-link>  <button type="button" @click="deleteVault(vault.id)" class="btn btn-danger">Delete</button>
             
         </div>
     </div>
