@@ -38,7 +38,7 @@ methods:{
 this.newVK.keepId=keepId
 this.newVK.vaultId=vaultId
 this.$store.dispatch("addVK",this.newVK);
-      $("#myModal").modal("hide");
+// this.$store.dispatch("keepCounter",keepId)
       this.newVK={}
     }
 },

@@ -134,6 +134,16 @@ async getKeepsByUser({commit,dispatch}){
     } catch (error) {
       console.error(error);
     }
+  },
+  
+  async keepCounter({commit,disptach}, keepId){
+    try {
+      editKeep={}
+      editKeep.id=keepId
+      let res = await api.put("keeps/"+keepId)
+    } catch (error) {
+      console.error(error); 
+    }
   }
 
   },

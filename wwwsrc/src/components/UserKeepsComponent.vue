@@ -53,7 +53,6 @@ else{
 this.newVK.keepId=userKeepId
 this.newVK.vaultId=vaultId
 this.$store.dispatch("addVK",this.newVK);
-      $("#myModal").modal("hide");
       this.newVK={}
     }
 },
