@@ -10,10 +10,8 @@
             <h5>{{isPrivate(userKeep)}}</h5>
             <button type="button" @click="deleteKeep(userKeep.id)" class="btn btn-danger">Delete </button>
            <div>
-                <ul>
-                    <li v-for="vault in vaults" :key="vault.id" :vault="vault" @click="addVK(userKeep.id,vault.id)">
-                     {{vault.name}}</li>
-                     </ul>
+                    <div type="button" v-for="vault in vaults" :key="vault.id" :vault="vault" @click="addVK(userKeep.id,vault.id)">
+                     {{vault.name}}</div>
                 
             </div>
           </div>

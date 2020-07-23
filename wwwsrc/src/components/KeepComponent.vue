@@ -10,8 +10,8 @@
             <h5>{{keep.views}} <i class="far fa-eye"></i> | {{keep.keeps}} <i class="fas fa-chess-rook"></i> </h5>
             <div>
                 <h5>Add to Vault:</h5>
-                    <button v-for="vault in vaults" :key="vault.id" :vault="vault" @click="addVK(keep.id,vault.id)">
-                     {{vault.name}}</button>
+                    <div type="button" v-for="vault in vaults" :key="vault.id" :vault="vault" @click="addVK(keep.id,vault.id)">
+                     {{vault.name}}</div>
                 
             </div>
         </div></div>

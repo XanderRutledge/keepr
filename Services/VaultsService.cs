@@ -29,7 +29,7 @@ namespace Keepr.Services
         {
             Vault exists = _repo.GetById(vaultId);
             if(exists ==null){throw new Exception("thats not a vault");}
-            if(exists.UserId!=userId){throw new Exception("thats not yours");}
+            // if(exists.UserId!=userId){throw new Exception("thats not yours");}
             return exists;
         }
 
