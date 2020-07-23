@@ -25,10 +25,11 @@ namespace Keepr.Services
           }
 
 
-        internal Vault GetById(int vaultId)
+        internal Vault GetById(int vaultId,string userId)
         {
             Vault exists = _repo.GetById(vaultId);
             if(exists ==null){throw new Exception("thats not a vault");}
+            if(exists.UserId!=userId){throw new Exception("thats not yours");}
             return exists;
         }
 
@@ -39,9 +40,9 @@ namespace Keepr.Services
             return newVault;
         }
 
-        internal Vault Delete(int id)
+        internal Vault Delete(int id, string userId)
         {
-            Vault exists = GetById(id);
+            Vault exists = GetById(id,userId);
             _repo.Delete(id);
             return exists;
         }

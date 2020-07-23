@@ -23,12 +23,19 @@ namespace Keepr.Services
             return _repo.GetKeepsByUserId(userId);
         }
 
-        internal Keep GetById(int id)
+        internal Keep GetById(int id,string userId)
         {
             Keep foundKeep = _repo.GetById(id);
             if (foundKeep == null)
             {
                 throw new Exception("Invalid Id");
+            }
+            if(foundKeep.IsPrivate==false){
+                return foundKeep;
+            }
+            if(foundKeep.IsPrivate == true)
+            {
+                throw new Exception("thats private");
             }
             return foundKeep;
         }
@@ -42,24 +49,8 @@ namespace Keepr.Services
 //NOTE finish this
         internal Keep Edit(Keep keepToUpdate, string userId)
         {
-            Keep foundKeep = GetById(keepToUpdate.Id);
-            // if (foundKeep.UserId != userId && foundKeep.Views<keepToUpdate.Views)
-            // {
-            //     if(_repo.ViewCount(keepToUpdate))
-            //     {
-            //         foundKeep.Views=keepToUpdate.Views;
-            //         return foundKeep;
-            //     }
-            // }
-            // if (foundKeep.Keeps<keepToUpdate.Keeps)
-            // {
-            //     if(_repo.KeepCount(keepToUpdate))
-            //     {
-            //         foundKeep.Keeps =keepToUpdate.Keeps;
-            //         return foundKeep;
-            //     }
-            // }
-            if(foundKeep.UserId==keepToUpdate.UserId)
+            Keep foundKeep = GetById(keepToUpdate.Id,userId);
+            if(foundKeep.UserId==userId)
             {
                 if(_repo.userEdit(keepToUpdate))
                 {
@@ -81,7 +72,7 @@ namespace Keepr.Services
 
         internal string Delete(int id, string userId)
         {
-            Keep foundKeep = GetById(id);
+            Keep foundKeep = GetById(id,userId);
             if(foundKeep.UserId != userId)
             {
                 throw new Exception("Get outta mah keep");

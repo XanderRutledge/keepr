@@ -19,9 +19,10 @@ namespace Keepr.Services
       return _repo.Create(newVaultKeep);
     }
 
-    public VaultKeep Delete(int id)
+    public VaultKeep Delete(int id,string userId)
     {
       VaultKeep exists = GetById(id);
+      if(userId!=exists.UserId){throw new Exception("thats not yours");}
       _repo.Delete(id);
       return exists;
     }
@@ -33,9 +34,9 @@ namespace Keepr.Services
       return exists;
     }
 
-    public IEnumerable<VaultKeepViewModel> GetByUser(string userId)
+    public IEnumerable<VaultKeepViewModel> GetKeepsByVault(int vaultId, string userId)
     {
-      return _repo.GetByUser(userId);
+      return _repo.GetKeepsByVault(vaultId,userId);
     }
 
 

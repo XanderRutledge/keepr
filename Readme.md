@@ -65,10 +65,10 @@ x Register, login and be automatically logged on page refresh
 x Create and Delete Keeps
 x Keeps can be public or private
 x Create and Delete Vaults
-- Only Delete **things they created**
+x Only Delete **things they created**
 - Add Keeps to Vaults
 - Remove Keeps from Vaults
-- Passes all the tests
+x Passes all the tests
 
 ### Finished?
 

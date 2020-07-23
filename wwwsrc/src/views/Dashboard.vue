@@ -7,8 +7,8 @@
     </div>
 
 <div class="row">
-      <div class="col-12 list-container md-px-5">
-      <div id="keeps" class="card-columns p-2" style="column-gap: 1rem;">
+      <div class="col-12 justify-content-center list-container md-px-5">
+      <div id="keeps" class="card-columns p-2" style="column-gap: 2rem;">
         <userKeep v-for="userKeep in userKeeps" :key="userKeep.id" :userKeep="userKeep" />
       </div>
       </div>
@@ -90,7 +90,7 @@ export default {
   name:"Dashboard",
     data(){
     return {
-      newVault: {}
+      newVault: {},
     }
   },
   async mounted() {

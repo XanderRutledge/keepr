@@ -16,12 +16,28 @@ namespace Keepr.Controllers
 public class VaultsController : ControllerBase
 {
     private readonly VaultsService _service;
+    private  readonly VaultKeepsService _VKservice;
 
-    public VaultsController(VaultsService service)
+    public VaultsController(VaultsService service, VaultKeepsService VKservice)
     {
         _service=service;
+        _VKservice=VKservice;
     }
 
+
+[HttpGet("{vaultId}/keeps")]
+    public ActionResult<Vault> GetKeepsByVault(int vaultId)
+    {
+      try
+      {
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        return Ok(_VKservice.GetKeepsByVault(vaultId,userId));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 
      [HttpGet("user")]
         [Authorize]
@@ -56,7 +72,9 @@ public class VaultsController : ControllerBase
     {
       try
       {
-        return Ok(_service.GetById(vaultId));
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+        return Ok(_service.GetById(vaultId,userId));
       }
       catch (Exception e)
       {
@@ -86,7 +104,9 @@ public class VaultsController : ControllerBase
     {
       try
       {
-        return Ok(_service.Delete(id));
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+        return Ok(_service.Delete(id,userId));
       }
       catch (Exception e)
       {
