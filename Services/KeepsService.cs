@@ -33,6 +33,10 @@ namespace Keepr.Services
             if(foundKeep.IsPrivate==false){
                 return foundKeep;
             }
+            if(foundKeep.IsPrivate == true && foundKeep.UserId==userId)
+            {
+                return foundKeep;
+            }
             if(foundKeep.IsPrivate == true)
             {
                 throw new Exception("thats private");
