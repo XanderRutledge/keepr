@@ -66,7 +66,7 @@ x Create and Delete Keeps
 x Keeps can be public or private
 x Create and Delete Vaults
 x Only Delete **things they created**
-- Add Keeps to Vaults
+x Add Keeps to Vaults
 - Remove Keeps from Vaults
 x Passes all the tests
 

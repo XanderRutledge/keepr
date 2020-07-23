@@ -2,7 +2,6 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "axios";
 import router from "../router";
-// import { KeepStore } from './KeepStore'
 
 Vue.use(Vuex);
 
@@ -20,7 +19,8 @@ export default new Vuex.Store({
   state: {
     publicKeeps: [],
     userKeeps:[],
-    vaults:[]
+    vaults:[],
+    vaultKeeps:[]
   },
   mutations: {
     setPublicKeeps(state, keeps){
@@ -31,6 +31,9 @@ export default new Vuex.Store({
     },
     setVaults(state, vaults){
       state.vaults = vaults;
+    },
+    addVaultKeeps(state, vaultKeeps ){
+      state.vaultKeeps = vaultKeeps
     }
   },
   actions: {
@@ -110,6 +113,23 @@ async getKeepsByUser({commit,dispatch}){
     try {
       let res = await api.post("vaultkeeps", newVaultKeep)
 
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  async getKeepsforVault({commit,dispatch}, vaultId){
+    try {
+      let res = await api.get("vaults/" + vaultId + "/keeps")
+        commit("addVaultKeeps",res.data)
+      
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  async deleteVK({commit,dispatch}, VKid){
+    try {
+      let res = await api.delete("vaultkeeps/"+ VKid)
     } catch (error) {
       console.error(error);
     }

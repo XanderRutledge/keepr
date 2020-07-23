@@ -2,7 +2,7 @@
 <div class="vault row" >
     <div class="col">
             
-            <h3>{{vault.name}} - {{vault.description}}  <button type="button" @click="deleteVault(vault.id)" class="btn btn-danger">Delete</button></h3>
+        <router-link :to="{ name: 'vault', params: { vaultId: vault.id } }"><h3>{{vault.name}} - {{vault.description}}</h3></router-link>  <button type="button" @click="deleteVault(vault.id)" class="btn btn-danger">Delete</button>
             
         </div>
     </div>
@@ -15,7 +15,8 @@ export default {
     data(){
         return {};
 },
-mounted(){},
+async mounted(){
+},
 // computed(){},
 methods:{
 deleteVault(id){
